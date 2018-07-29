@@ -14,7 +14,7 @@ dotd = soup.select('.dotd-title')
 dotd = dotd[0].text.strip()
 dotd_txt = soup.find("div", class_="dotd-main-book-summary float-left").select("div")[2].text.strip()
 dotd_image = soup.find("div", class_="dotd-main-book-image float-left")
-image_src = "https:"+dotd_image.a.noscript.img.get('src')
+image_src = dotd_image.a.noscript.img.get('src')
 
 print("BS parse result:{}".format(dotd))
 
