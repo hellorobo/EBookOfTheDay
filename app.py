@@ -9,7 +9,7 @@ import os
 url = "https://www.packtpub.com/packt/offers/free-learning"
 agent = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'}
 
-wantedString = os.environ['SEARCH_STRING']
+wantedString = os.environ['WANTED_STRING']
 chrome_bin = os.environ['GOOGLE_CHROME_BIN']
 chrome_driver = os.environ['CHROMEDRIVER_PATH']
 siteName = 'Pact Publishing'
@@ -32,9 +32,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 timeout = 5
-neededElement = 'free-learning-dropin'
+# neededElement = 'free-learning-dropin'
 try:
-    element_present = EC.presence_of_element_located((By.ID, neededElement))
+    element_present = EC.presence_of_element_located((By.ID, wantedString))
     WebDriverWait(driver, timeout).until(element_present)
     isPageLoaded = True
     print("Web page loaded completely")
