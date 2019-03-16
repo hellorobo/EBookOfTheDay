@@ -45,7 +45,7 @@ except TimeoutException:
 if isPageLoaded:
     resp = driver.page_source
     driver.close()
-    soup = BeautifulSoup(resp.text, 'html.parser')
+    soup = BeautifulSoup(resp, 'lxml')
     dotd = soup.select('.dotd-title')
     dotd = dotd[0].text.strip()
     dotd_txt = soup.find("div", class_="dotd-main-book-summary float-left").select("div")[2].text.strip()
