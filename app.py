@@ -93,7 +93,7 @@ if isPageLoaded:
 
 else:
     message = 'Couldn\'t retrieve page contents'
-    subject = f'{Oh, no! Couldn't retrieve today\'s Ebook of the day from Pact Publishing'
+    subject = 'Oh, no! Couldn\'t retrieve today\'s Ebook of the day from Pact Publishing'
 print(message)
 
 
