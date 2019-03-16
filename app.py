@@ -43,57 +43,57 @@ except TimeoutException:
     print ("Timed out waiting for page to load")
 
 if isPageLoaded:
-	resp = driver.page_source
-	driver.close()
-    soup = BeautifulSoup(resp.text, 'html.parser')
-    dotd = soup.select('.dotd-title')
-    dotd = dotd[0].text.strip()
-    dotd_txt = soup.find("div", class_="dotd-main-book-summary float-left").select("div")[2].text.strip()
-    dotd_image = soup.find("div", class_="dotd-main-book-image float-left")
-    image_src = dotd_image.a.noscript.img.get('src')
+    resp = driver.page_source
+    driver.close()
+	soup = BeautifulSoup(resp.text, 'html.parser')
+	dotd = soup.select('.dotd-title')
+	dotd = dotd[0].text.strip()
+	dotd_txt = soup.find("div", class_="dotd-main-book-summary float-left").select("div")[2].text.strip()
+	dotd_image = soup.find("div", class_="dotd-main-book-image float-left")
+	image_src = dotd_image.a.noscript.img.get('src')
 
-    print("BS parse result:{}".format(dotd))
+	print("BS parse result:{}".format(dotd))
 
 
-    subject = f'{dotd} - Pact Publishing Book of The Day!'
-    #message = "Today\'s Pact Book: {}\n URL: {}".format(dotd,url)
+	subject = f'{dotd} - Pact Publishing Book of The Day!'
+	#message = "Today\'s Pact Book: {}\n URL: {}".format(dotd,url)
 
-    css = '''
-    <style type="text/css">
-    body {font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;}
-    h2 {clear: both;font-size: 130%; }
-    h3 {clear: both;font-size: 115%;margin-left: 20px;margin-top: 30px;}
-    p {margin-left: 20px; font-size: 12px;}
-    </style>
-    '''
+	css = '''
+	<style type="text/css">
+	body {font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;}
+	h2 {clear: both;font-size: 130%; }
+	h3 {clear: both;font-size: 115%;margin-left: 20px;margin-top: 30px;}
+	p {margin-left: 20px; font-size: 12px;}
+	</style>
+	'''
 
-    html_head = '''
-    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
-    <html><head><title>{}</title>
-    {}
-    </head>
-    '''.format(subject,css)
+	html_head = '''
+	<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+	<html><head><title>{}</title>
+	{}
+	</head>
+	'''.format(subject,css)
 
-    html_body = '''
-    <body>
+	html_body = '''
+	<body>
 
-    <h2>Today\'s Pact Book: {0}\n</h2>
+	<h2>Today\'s Pact Book: {0}\n</h2>
 
-    <p>
-    <a href="{2}"><img border="0" alt="DOTD" src="{3}" width="224" height="276"></a>
-    </p>
-    <p>{1}</p>
-    <h3> {2} </h3>
-    </body>
-    '''.format(dotd,dotd_txt,url,image_src)
+	<p>
+	<a href="{2}"><img border="0" alt="DOTD" src="{3}" width="224" height="276"></a>
+	</p>
+	<p>{1}</p>
+	<h3> {2} </h3>
+	</body>
+	'''.format(dotd,dotd_txt,url,image_src)
 
-    html_foot = '</html>'
+	html_foot = '</html>'
 
-    message = html_head + html_body + html_foot
+	message = html_head + html_body + html_foot
 
 else:
     message = 'Couldn\'t retrieve page contents'
-    subject = f'{Oh, no! Couldn't retrieve today\'s Ebook of the day from Pact Publishing'
+	subject = f'{Oh, no! Couldn't retrieve today\'s Ebook of the day from Pact Publishing'
 print(message)
 
 
@@ -111,11 +111,11 @@ recipients = [{'Email': 'ignorethismessage@gmail.com'}]
 
 
 email = {
-    'FromName': fromname,
-    'FromEmail': sender,
-    'Subject': subject,
-    'Html-Part': message,
-    'Recipients': recipients
+	'FromName': fromname,
+	'FromEmail': sender,
+	'Subject': subject,
+	'Html-Part': message,
+	'Recipients': recipients
 }
 
 response = mailjet.send.create(email)
