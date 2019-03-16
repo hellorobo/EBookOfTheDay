@@ -51,7 +51,7 @@ if isPageLoaded:
     dotd = soup.find("div", class_="product__right").select("h2")[0].text.strip()
 
     # dotd_txt = soup.find("div", class_="dotd-main-book-summary float-left").select("div")[2].text.strip()
-    dotd_image = soup.find("div", class_="product__left").
+    dotd_image = soup.find("div", class_="product__left")
     # dotd_image = soup.find("div", class_="dotd-main-book-image float-left")
     image_src = dotd_image.a.img.get('src')
 
