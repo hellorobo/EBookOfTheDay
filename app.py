@@ -130,7 +130,7 @@ email = {
     "From": mail_from,
     "To": mail_to,
     "Subject": mail_subject,
-    "Html-Part": mail_htmlpart
+    "HTMLPart": mail_htmlpart
 }
 
 response = mailjet.send.create(email)
