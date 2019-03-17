@@ -12,11 +12,12 @@ agent = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537
 wantedString = os.environ['WANTED_STRING']
 chrome_bin = os.environ['GOOGLE_CHROME_BIN']
 chrome_driver = os.environ['CHROMEDRIVER_PATH']
-siteName = 'Pact Publishing'
+# siteName = 'Pact Publishing'
 
 if os.environ['DEBUG'] == 'true':
     debug_on = True
-else debug_on = False
+else
+    debug_on = False
 
 
 chrome_options = Options()
