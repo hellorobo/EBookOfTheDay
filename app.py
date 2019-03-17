@@ -48,25 +48,28 @@ if isPageLoaded:
     resp = driver.page_source
     driver.close()
 
+    soup = BeautifulSoup(resp, 'lxml')
+    dotd = soup.find(id='free-learning-dropin')
     if debug_on:
             print('==== resp beginning =====')
             print(resp)
             print('==== resp end ===========')
-
-    soup = BeautifulSoup(resp, 'lxml')
-    # dotd = soup.select('product')
     # dotd = dotd[0].text.strip()
-    dotd = soup.find("div", class_="product__right").select("h2")[0].text.strip()
-    dotd_txt = soup.find("div", class_="product__right").find("p").text.strip()
-    # dotd_txt = soup.find("div", class_="dotd-main-book-summary float-left").select("div")[2].text.strip()
+    dotd_title = soup.find("div", class_="product__right").select("h2")[0].text.strip()
+    dotd_author = soup.find("div", class_="product__right").find("p", class_="product__author").text.strip()
     dotd_image = soup.find("div", class_="product__left")
+    image_src = dotd_image.a.img['src']
+    # image_src = dotd_image.a.img.get('src')
+
+    # dotd_txt = soup.find("div", class_="dotd-main-book-summary float-left").select("div")[2].text.strip()
+
     # dotd_image = soup.find("div", class_="dotd-main-book-image float-left")
-    image_src = dotd_image.a.img.get('src')
+
 
     # print("BS parse result:{}".format(dotd))
 
 
-    subject = f'{dotd} - Pact Publishing Book of The Day!'
+    subject = f'{dotd_title} - Pact Publishing Book of The Day!'
     #message = "Today\'s Pact Book: {}\n URL: {}".format(dotd,url)
 
     css = '''
@@ -96,7 +99,7 @@ if isPageLoaded:
     <p>{1}</p>
     <h3> {2} </h3>
     </body>
-    '''.format(dotd,dotd_txt,url,image_src)
+    '''.format(dotd_title,dotd_author,url,image_src)
 
     html_foot = '</html>'
 
@@ -106,7 +109,7 @@ else:
     message = 'Couldn\'t retrieve page contents'
     subject = 'Oh, no! Couldn\'t retrieve today\'s Ebook of the day from Pact Publishing'
 
-if debug_on: print(message)
+# if debug_on: print(message)
 
 
 
