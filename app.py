@@ -127,13 +127,15 @@ mail_subject = subject
 mail_htmlpart = message
 
 email = {
-    "From": mail_from,
-    "To": mail_to,
-    "Subject": mail_subject,
-    "HTMLPart": mail_htmlpart
+    'Messages': [
+        "From": mail_from,
+        "To": mail_to,
+        "Subject": mail_subject,
+        "HTMLPart": mail_htmlpart
+    ]
 }
 
-response = mailjet.send.create(email)
+response = mailjet.send.create(data=email)
 print("MailJet response:{}".format(response))
 
 #dotd_image = soup.select('bookimage imagecache imagecache-dotd_main_image')
