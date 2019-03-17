@@ -86,7 +86,7 @@ if isPageLoaded:
     </body>
     '''.format(dotd_title,dotd_author,url,dotd_image_src)
 else:
-    html_body = f'<body><h2>Couldn\'t retrieve {url} contents</h2>''
+    html_body = f'<body><h2>Couldn\'t retrieve {url} contents</h2>'
     subject = 'Oh, no! Couldn\'t retrieve today\'s Ebook of the day from Pact Publishing'
 
 css = '''
