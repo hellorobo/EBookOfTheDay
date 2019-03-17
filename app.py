@@ -127,11 +127,11 @@ mail_subject = subject
 mail_htmlpart = message
 
 email = {
-    'Messages': [
+    'Messages': [{
         "From": mail_from,
         "To": mail_to,
         "Subject": mail_subject,
-        "HTMLPart": mail_htmlpart
+        "HTMLPart": mail_htmlpart}
     ]
 }
 
