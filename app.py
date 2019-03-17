@@ -6,13 +6,15 @@ from mailjet_rest import Client
 import os
 
 
-url = "https://www.packtpub.com/packt/offers/free-learning"
+url = os.environ['URL']
 agent = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/64.0.3282.186 Safari/537.36'}
 
 wantedString = os.environ['WANTED_STRING']
 chrome_bin = os.environ['GOOGLE_CHROME_BIN']
 chrome_driver = os.environ['CHROMEDRIVER_PATH']
 siteName = 'Pact Publishing'
+if os.environ['DEBUG'] == 'true':
+    debug_on = True
 
 chrome_options = Options()
 chrome_options.binary_location = chrome_bin
@@ -45,6 +47,12 @@ except TimeoutException:
 if isPageLoaded:
     resp = driver.page_source
     driver.close()
+
+    if debug_on:
+            print('==== resp beginning =====')
+            print(resp)
+            print('==== resp end ===========')
+
     soup = BeautifulSoup(resp, 'lxml')
     # dotd = soup.select('product')
     # dotd = dotd[0].text.strip()
@@ -97,7 +105,8 @@ if isPageLoaded:
 else:
     message = 'Couldn\'t retrieve page contents'
     subject = 'Oh, no! Couldn\'t retrieve today\'s Ebook of the day from Pact Publishing'
-print(message)
+
+if debug_on: print(message)
 
 
 
