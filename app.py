@@ -65,7 +65,7 @@ if isPageLoaded:
     dotd_details = dotd_right.findAll("p")
     product_details = ''
     for detail_r in dotd_details:
-        product_details = product_details + '<p>' + detial_r.text.strip() + '</p>'
+        product_details = product_details + '<p>' + detail_r.text.strip() + '</p>'
 
     dotd_right_lists = dotd_right.ul.findAll("li")
     product_lists = '<ul>'
