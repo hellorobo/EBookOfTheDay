@@ -119,10 +119,13 @@ if debug_on: print(message)
 
 API_KEY = os.environ['MJ_APIKEY_PUBLIC']
 API_SECRET = os.environ['MJ_APIKEY_PRIVATE']
+MAIL_FROM = os.environ['MAIL_FROM']
+MAIL_FROM_NAME = os.environ['MAIL_FROM_NAME']
+MAIL_TO = os.environ['MAIL_TO']
 
 mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
-mail_from = {"Email": "messanger@tutamail.com", "Name": "MessangerAPI"}
-mail_to = [{"Email": "ignorethismessage@gmail.com"}]
+mail_from = {"Email": MAIL_FROM, "Name": MAIL_FROM_NAME}
+mail_to = [{"Email": MAIL_TO}]
 mail_subject = subject
 mail_htmlpart = message
 
