@@ -13,8 +13,9 @@ wantedString = os.environ['WANTED_STRING']
 chrome_bin = os.environ['GOOGLE_CHROME_BIN']
 chrome_driver = os.environ['CHROMEDRIVER_PATH']
 siteName = 'Pact Publishing'
-if os.environ['DEBUG'] == 'true':
-    debug_on = True
+
+if os.environ['DEBUG'] == 'true': debug_on = True else debug_on = False
+
 
 chrome_options = Options()
 chrome_options.binary_location = chrome_bin
@@ -52,7 +53,7 @@ if isPageLoaded:
     dotd = soup.find(id='free-learning-dropin')
     if debug_on:
             print('==== resp beginning =====')
-            print(resp)
+            print(dotd)
             print('==== resp end ===========')
     # dotd = dotd[0].text.strip()
     dotd_title = soup.find("div", class_="product__right").select("h2")[0].text.strip()
@@ -96,7 +97,7 @@ if isPageLoaded:
     <p>
     <a href="{2}"><img border="0" alt="DOTD" src="{3}" width="224" height="276"></a>
     </p>
-    <p>{1}</p>
+    <p>author: {1}</p>
     <h3> {2} </h3>
     </body>
     '''.format(dotd_title,dotd_author,url,image_src)
