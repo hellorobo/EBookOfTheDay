@@ -14,7 +14,9 @@ chrome_bin = os.environ['GOOGLE_CHROME_BIN']
 chrome_driver = os.environ['CHROMEDRIVER_PATH']
 siteName = 'Pact Publishing'
 
-if os.environ['DEBUG'] == 'true': debug_on = True else debug_on = False
+if os.environ['DEBUG'] == 'true':
+    debug_on = True
+else debug_on = False
 
 
 chrome_options = Options()
