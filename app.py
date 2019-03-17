@@ -16,7 +16,7 @@ chrome_driver = os.environ['CHROMEDRIVER_PATH']
 
 if os.environ['DEBUG'] == 'true':
     debug_on = True
-else
+else:
     debug_on = False
 
 
