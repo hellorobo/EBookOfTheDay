@@ -63,14 +63,14 @@ if isPageLoaded:
     dotd_title = dotd_right.select("h2")[0].text.strip()
     # dotd_author = dotd.find("div", class_="product__right").find("p", class_="product__author").text.strip()
     dotd_details = dotd_right.findAll("p")
-    product_details = ''
+    dotd_product_details = ''
     for detail_r in dotd_details:
-        product_details = product_details + '<p>' + detail_r.text.strip() + '</p>'
+        dotd_product_details = dotd_product_details + '<p>' + detail_r.text.strip() + '</p>'
 
     dotd_right_lists = dotd_right.ul.findAll("li")
-    product_lists = '<ul>'
+    dotd_product_lists = '<ul>'
     for list_r in dotd_right_lists:
-        product_lists = product_lists + '<li>' + list_r.text.strip() +'</li>'
+        dotd_product_lists = dotd_product_lists + '<li>' + list_r.text.strip() +'</li>'
 
     dotd_left = dotd.find("div", class_="product__left")
     dotd_image_src = dotd_left.a.img.get('src')
@@ -90,7 +90,7 @@ if isPageLoaded:
     <p>{4}</p>
     <h3> {2} </h3>
     </body>
-    '''.format(dotd_title,dotd_product_details,url,dotd_image_src,product_lists)
+    '''.format(dotd_title,dotd_product_details,url,dotd_image_src,dotd_product_lists)
 else:
     html_body = f'<body><h2>Couldn\'t retrieve {url} contents</h2>'
     subject = 'Oh, no! Couldn\'t retrieve today\'s Ebook of the day from Pact Publishing'
