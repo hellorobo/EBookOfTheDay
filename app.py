@@ -53,16 +53,18 @@ if isPageLoaded:
     driver.close()
 
     soup = BeautifulSoup(resp, 'lxml')
-    dotd = soup.find(id='free-learning-dropin')
-    if debug_on:
-            print('==== resp beginning =====')
-            print(dotd)
-            print('==== resp end ===========')
+    # dotd = soup.find(id='free-learning-dropin')
+    dotd = soup.find("div", class_="product")
+    # if debug_on:
+    #         print('==== resp beginning =====')
+    #         print(dotd)
+    #         print('==== resp end ===========')
     # dotd = dotd[0].text.strip()
-    dotd_title = soup.find("div", class_="product__right").select("h2")[0].text.strip()
-    dotd_author = soup.find("div", class_="product__right").find("p", class_="product__author").text.strip()
-    dotd_image = soup.find("div", class_="product__left")
-    image_src = dotd_image.a.img['src']
+    dotd_title = dotd.find("div", class_="product__right").select("h2")[0].text.strip()
+    dotd_author = dotd.find("div", class_="product__right").find("p", class_="product__author").text.strip()
+    dotd_image_src = dotd.find("div", class_="product__left").a.img.get('src')
+    if debug_on: print(dotd_image_src)
+    # image_src = dotd_image.a.img['src']
     # image_src = dotd_image.a.img.get('src')
 
     # dotd_txt = soup.find("div", class_="dotd-main-book-summary float-left").select("div")[2].text.strip()
@@ -103,7 +105,7 @@ if isPageLoaded:
     <p>author: {1}</p>
     <h3> {2} </h3>
     </body>
-    '''.format(dotd_title,dotd_author,url,image_src)
+    '''.format(dotd_title,dotd_author,url,dotd_image_src)
 
     html_foot = '</html>'
 
