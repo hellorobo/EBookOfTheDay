@@ -83,7 +83,7 @@ if isPageLoaded:
     <body>
     <h2>Today\'s Pact Book: {0}\n</h2>
     <p>
-    <a href=\"{2}\"><img border=\"0\" alt=\"DOTD\" src=\"{3}\" width=\"224\" height=\"276\"></a>
+    <a href=\"{2}\"><img border=\"0\" alt=\"product_picture\" src=\"{3}\" width=\"224\" height=\"276\"></a>
     </p>
     <p></p>
     <p>product details: {1}</p>
@@ -113,7 +113,7 @@ html_head = '''
 
 html_foot = '</html>'
 
-message = f'\"{html_head}{html_body}{html_foot}\"'
+message = f"{html_head}{html_body}{html_foot}"
 
 if debug_on: print(message)
 
