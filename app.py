@@ -115,7 +115,7 @@ else:
     message = 'Couldn\'t retrieve page contents'
     subject = 'Oh, no! Couldn\'t retrieve today\'s Ebook of the day from Pact Publishing'
 
-# if debug_on: print(message)
+if debug_on: print(message)
 
 
 
